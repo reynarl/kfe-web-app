@@ -4,10 +4,47 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles/admin.css">
+  <title>Admin</title>
+  <link rel="stylesheet" href="./../styles/admin.css">
+  <script defer src="./../src/admin.js" type="module"></script>
 </head>
 <body>
+  <header>
+    <h1>Admin</h1>
+  </header>
+  <section id="orders">
+    <select id="selectMonth" class="form-select" aria-label="Default select example">
+      <option selected>Seleccionar mes</option>
+      <option value="01">Enero</option>
+      <option value="02">Febrero</option>
+      <option value="03">Marzo</option>
+      <option value="04">Abril</option>
+      <option value="05">Mayo</option>
+      <option value="06">Junio</option>
+      <option value="07">Julio</option>
+      <option value="08">Agosto</option>
+      <option value="09">Septiembre</option>
+      <option value="10">Octubre</option>
+      <option value="11">Noviembre</option>
+      <option value="12">Diciembre</option>
+    </select>
+
+    </select>
+    <div id="contain" class="">
+      <table id="orderTable">
+        <thead>
+          <tr>
+            <th>Cantidad</th>
+            <th>Platillos</th>
+            <th>subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="setOrder">
+        </tbody>
+      </table>
+    </div>
+    <div id="contain-results"></div>
+  </section>
   
 </body>
 </html>

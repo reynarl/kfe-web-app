@@ -16,7 +16,7 @@ export const nuevoPedido = async client => {
   }
 }
 
-export const getData = async () =>{
+export const getOrder = async () =>{
   try{
     const res = await fetch(url)
     const orders = await res.json()
