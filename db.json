@@ -1,0 +1,14 @@
+{
+  "Platillos": [
+    {
+      "id": 1,
+      "nombre": "Huevos con jamón",
+      "precio": 70
+    },
+    {
+      "id": 2,
+      "nombre": "Huevos con tocino",
+      "precio": 80
+    }
+  ]
+}
