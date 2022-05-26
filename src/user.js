@@ -93,8 +93,8 @@ function mostrarPlatillos(platillos){
   
 
   function agregarPlatillo(producto){
-    let dateOrder = saveMonth()
-    dateOrder = createDate()
+    // let dateOrder = saveMonth()
+    let dateOrder = createDate()
 
     if(producto.cantidad !== 0){
       // console.log(producto.cantidad)
@@ -119,33 +119,33 @@ function mostrarPlatillos(platillos){
 
 
   function showDate(){
-    const dateOrder = document.getElementById('dateOrder')
-    const btnChangeDate = document.getElementById('btnChangeDate')
+    // const dateOrder = document.getElementById('dateOrder')
+    // const btnChangeDate = document.getElementById('btnChangeDate')
     const labelDate = document.getElementById('labelDate')
 
     createDate()
     labelDate.innerHTML = `Fecha: ${day}/0${month}/${year}`
-    dateOrder.classList.add('d-none')
+    // dateOrder.classList.add('d-none')
 
-    btnChangeDate.addEventListener('click', changeDate)
-    function changeDate(){
-      labelDate.classList.add('d-none')
-      dateOrder.classList.remove('d-none')
-      btnChangeDate.classList.add('d-none')
-    }
+    // btnChangeDate.addEventListener('click', changeDate)
+    // function changeDate(){
+    //   labelDate.classList.add('d-none')
+    //   dateOrder.classList.add('d-none')
+    //   btnChangeDate.classList.add('d-none')
+    // }
 
     //evento al cambiar la fecha sobre el input Date
-    dateOrder.onchange = function(){
-      saveMonth()
-    }
+    // dateOrder.onchange = function(){
+    //   saveMonth()
+    // }
   }
 
-  function saveMonth(){
-    let dateNow = dateOrder.value
-    dateNow = dateNow.split('-')
-    let dateOrderNow = dateNow[1]
-    return dateOrderNow
-  }
+  // function saveMonth(){
+  //   let dateNow = dateOrder.value
+  //   dateNow = dateNow.split('-')
+  //   let dateOrderNow = dateNow[1]
+  //   return dateOrderNow
+  // }
 
   function createDate(){
     let date = new Date()

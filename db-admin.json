@@ -54,6 +54,83 @@
         "dateOrder": "05"
       },
       "id": 5
+    },
+    {
+      "orden": {
+        "id": 2,
+        "nombre": "Huevos con tocino",
+        "precio": 80,
+        "cantidad": 1,
+        "subtotal": 80,
+        "dateOrder": "05"
+      },
+      "id": 6
+    },
+    {
+      "orden": {
+        "id": 2,
+        "nombre": "Huevos con tocino",
+        "precio": 80,
+        "cantidad": 5,
+        "subtotal": 400,
+        "dateOrder": "05"
+      },
+      "id": 7
+    },
+    {
+      "orden": {
+        "id": 1,
+        "nombre": "Huevos con jamón",
+        "precio": 70,
+        "cantidad": 1,
+        "subtotal": 70,
+        "dateOrder": "05"
+      },
+      "id": 8
+    },
+    {
+      "orden": {
+        "id": 1,
+        "nombre": "Huevos con jamón",
+        "precio": 70,
+        "cantidad": 3,
+        "subtotal": 210,
+        "dateOrder": "05"
+      },
+      "id": 9
+    },
+    {
+      "orden": {
+        "id": 1,
+        "nombre": "Huevos con jamón",
+        "precio": 70,
+        "cantidad": 1,
+        "subtotal": 70,
+        "dateOrder": "05"
+      },
+      "id": 10
+    },
+    {
+      "orden": {
+        "id": 2,
+        "nombre": "Huevos con tocino",
+        "precio": 80,
+        "cantidad": 2,
+        "subtotal": 160,
+        "dateOrder": "05"
+      },
+      "id": 11
+    },
+    {
+      "orden": {
+        "id": 1,
+        "nombre": "Huevos con jamón",
+        "precio": 70,
+        "cantidad": 6,
+        "subtotal": 420,
+        "dateOrder": "05"
+      },
+      "id": 12
     }
   ]
 }
