@@ -4,24 +4,16 @@ let cliente = {
   pedido: []
 }
 
-
-
 let day, month, year
 const btnNewOrder = document.querySelector('#btnNewOrder')
 
 btnNewOrder.addEventListener('click', saveOrder)
-
 function saveOrder(){
-  console.log('desde la funcion')
-
   cliente = {...cliente}
-  
   //mostrarsecciones
   showSections()
-
   //mostrar fecha
   // showDate()
-
   //obtener platillos de la API
   getData()
 }
@@ -30,6 +22,7 @@ function saveOrder(){
 function showSections(){
   const hideSection = document.querySelectorAll('.d-none')
   hideSection.forEach(section => section.classList.remove('d-none'))
+  btnNewOrder.classList.add('d-none')
 }
 
 
@@ -64,14 +57,14 @@ function mostrarPlatillos(platillos){
 
     //agregando input
     const inputDiv = document.createElement('div')
-    inputDiv.className = 'col-3'
+    inputDiv.className = 'col-3 input-div'
 
     const inputCantidad = document.createElement('input')
     inputCantidad.type = "number"
     inputCantidad.min = 0
     inputCantidad.value = 0
     inputCantidad.id = `${platillo.id}`
-    inputCantidad.className = 'form-control'
+    inputCantidad.className = 'form-control input-num'
     inputDiv.appendChild(inputCantidad)
 
     menu.appendChild(divName)
@@ -103,7 +96,11 @@ function mostrarPlatillos(platillos){
       // console.log(producto)
       agregarABD({...producto, subtotal, dateOrder})
     }else{
-      console.log('es cero xd')
+      const setError = document.getElementById('setError')
+      setError.innerHTML = `<b>Agrega al menos un platillo</b>`
+      setTimeout(()=>{
+        setError.classList.add('d-none')
+      },3000)
     }
   }
 
@@ -140,13 +137,6 @@ function mostrarPlatillos(platillos){
     // }
   }
 
-  // function saveMonth(){
-  //   let dateNow = dateOrder.value
-  //   dateNow = dateNow.split('-')
-  //   let dateOrderNow = dateNow[1]
-  //   return dateOrderNow
-  // }
-
   function createDate(){
     let date = new Date()
     day = date.getDate()
@@ -154,7 +144,13 @@ function mostrarPlatillos(platillos){
     year = date.getFullYear()
     return `0${month}`
   }
-  
+
+  // function saveMonth(){
+  //   let dateNow = dateOrder.value
+  //   dateNow = dateNow.split('-')
+  //   let dateOrderNow = dateNow[1]
+  //   return dateOrderNow
+  // }
 
   //mostrar los datos en resumen del pedido
   // function actualizarResumen(){

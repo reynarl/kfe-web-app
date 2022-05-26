@@ -11,7 +11,6 @@
 </head>
 <body>
   <header>
-    <h1>Admin</h1>
   </header>
   <section id="orders">
     <select id="selectMonth" class="form-select" aria-label="Default select example">
@@ -30,23 +29,19 @@
       <option value="12">Diciembre</option>
     </select>
 
-    </select>
     <div id="contain" class="">
       <table id="orderTable">
         <thead>
           <tr>
-            <th>Cantidad</th>
-            <th>Platillos</th>
-            <th>subtotal</th>
           </tr>
         </thead>
         <tbody id="setOrder">
         </tbody>
       </table>
     </div>
-    <div id="contain-results"></div>
+    <div id="contain-results" class="d-none"></div>
   </section>
-  <section>
+  <section id="chart">
     <canvas id="myChart" width="400" height="400"></canvas>
   </section>
   

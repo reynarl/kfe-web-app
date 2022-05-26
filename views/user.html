@@ -10,31 +10,33 @@
 </head>
 <body>
   <header>
-    <h1>KFE Menú</h1>
   </header>
-  <section>
-    <button id="btnNewOrder" type="button">Crear Orden</button>
+  <section class="kfe-btn-general">
+    <button class="kfe-btn" id="btnNewOrder" type="button">NUEVA ORDEN</button>
   </section>
 
   <section class="d-none" id="menu">
-    <h2>Platillos</h2>
+    <h2>MENÚ</h2>
     <div class="row container">
       <div class="col-7"></div>
-      <div class="col-2"></div>
-      <div class="col-3"><p>Cantidad</p></div>
+      <div class="col-2 menu-title">Precio</div>
+      <div class="col-3 menu-title"><p>Cantidad</p></div>
     </div>
-    <div id="containDish"></div>
+    <div class="containMenu" id="containDish"></div>
   </section>
 
   <section class="d-none" id="resume">
-    <h2>Resumen del pedido</h2>
+    <h2>CONFIRMAR PEDIDO</h2>
     <div class="date">
       <label for="dateOrder" id="labelDate"></label>
       <!-- <button type="button" id="btnChangeDate" class="">Cambiar fecha</button>
       <input id="dateOrder" type="date" value=""> -->
     </div>
     <div id="description" class=""></div>
-    <button id="btnRegisterOrder" type="button">Registrar</button>
+    <div class="kfe-btn-general">
+      <button class="kfe-btn" id="btnRegisterOrder" type="button">REGISTRAR</button>
+      <p id="setError"></p>
+    </div>
   </section>
 </body>
 </html>

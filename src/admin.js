@@ -23,162 +23,80 @@ async function mostrarClientes(){
     let salesAmount = 0
     let topProducts = []
     let ids = []
-    // let pruebita = []
 
     orders.forEach( order =>{
       const {nombre, cantidad, subtotal, dateOrder, id} = order.orden
-      if(month === dateOrder){
+      if(month === dateOrder && cantidad !== null){
         
         const tr = document.createElement('tr')
         numProducts = numProducts + cantidad
         salesAmount = salesAmount + subtotal
-        
-        tr.innerHTML +=`
-        <td>${cantidad}</td>
-        <td>${nombre}</td>
-        <td>$${subtotal}</td>
-        <td>${id}</td>
-        `
 
-        
         setOrder.appendChild(tr)
 
         //add numbers to array
         topProducts.push(cantidad)
         ids.push({id,cantidad, nombre})
-        // pruebita.push(order)
         
       }else{
-        console.log('nada')
+        // console.log('error')
       }
     })
 
-    mostSelledProducts(topProducts)
     //agregar productos iguales en uno solo
     incrementProducts(ids)
-    // incrementProducts(pruebita)
 
-    // const title = document.createElement('h2')
+    //creando elementos y mostrarlos en la vista
     const p = document.createElement('p')
     const pSalesAmount = document.createElement('p')
     
-    // title.textContent = `Total de ventas durante el mes`
-    p.textContent = `Productos vendidos: ${numProducts}`
-    pSalesAmount.textContent = `Importe total de ventas: $${salesAmount}`
+    p.innerHTML = `<b>Productos vendidos: ${numProducts}</b>`
+    pSalesAmount.innerHTML = `<b>Importe total de ventas: $${salesAmount}</b>`
 
-    // containResults.appendChild(title)
     containResults.appendChild(p)
     containResults.appendChild(pSalesAmount)
+    containResults.classList.remove('d-none')
   }
 
   function incrementProducts(idArray){
-
-    //creando título para la seccion
-    //Total de ventas durante el mes
+    //creando título para la seccion 'Total de ventas durante el mes'
     const title = document.createElement('h2')
-    title.textContent = `Total de ventas durante el mes`
+    title.textContent = `TOTAL DE VENTAS DURANTE EL MES`
     containResults.appendChild(title)
 
-    // console.log(duplicados)
-    let d 
-    let no, no1, no2
-    const newArray = [1,2,3,4,5]
-    idArray.sort((a,b)=> a.id-b.id)
-
+    let data, d 
+    let arrName = []
+    let arrNum = []
     
-
-    // for(let i=1; i<=newArray.length; i++){
-    //   no = idArray.filter(order => order.id === 1)
-    //   no1 = idArray.filter(order => order.id === 2)
-    //   no2 = idArray.filter(order => order.id === 3)
-    // }
-
-    let kk 
-    
-    for(let i=1; i<=newArray.length; i++){
+    for(let i=1; i<=10; i++){
       //busca si hay ids iguales (pedidos)
       if(idArray.filter(order => order.id === i)){
+        idArray.sort((a,b)=> a.id-b.id)
         //crea nuevo array con las ordenes de un tipo de id
-        kk = idArray.filter(order => order.id === i)
-        // kk.filter(order =>{
-        //   // console.log(order.cantidad)
-        //   d = order.cantidad
-        // })
+        data = idArray.filter(order => order.id === i)
       }
       
       //si el arreglo no esta vacío
-      if(kk.length){
-        console.log(kk)
-        // console.log(kk.length)
-        // kk[i]
-        let contador = 0
-        for(let k=0;k<kk.length;k++){
-          contador += kk[k].cantidad
-          d= kk[k].nombre
+      if(data.length){
+        // console.log(data)
+        let count = 0
+        //recorriendo por arreglo
+        for(let k=0;k<data.length;k++){
+          count += data[k].cantidad
+          d= data[k].nombre
+          
         }
-        // console.log(contador)
+        //agregando los valores (nombre y cantidad)
+        arrName.push(d)
+        arrNum.push(count)
+        // console.log(count)
         const p = document.createElement('p')
-        p.textContent = `${contador} ${d}`
+        p.textContent = `${count} ${d}`
         containResults.appendChild(p)
-
-
-
-        //GRAFICA
-        grafica()
-        
-
-
-
-
-
-
-
-
-        
-      }else{
-        console.log('vacio')
+        //CHART
+        grafica(arrName, arrNum)
       }
-      // console.log(kk)
-      
-      
-      // kk = [kk]
-      // console.log(contador)
-      // console.log(d)
     }
-    
-    // console.log(contador)
-    
-    // console.log(no)
-    // console.log(no1)
-    // console.log(no2)
-
-    // for(let i=0; i<idArray.length; i++){
-    //   // if(idArray[i].id === 1){
-    //   //   console.log(idArray[i])
-    //   // }
-      
-    //   for(let j = 0; j<newArray.length; j++){
-    //     console.log('nA:',newArray[j])
-    //     console.log(i)
-    //   }
-      
-    // }
-    
-    // const suma = []
-    // let contador = 1
-    // for(let i=0; i<idArray.length; i++){
-    //   let j = 1
-    //   if(idArray[j].id === idArray[i].id){
-    //     contador++
-    //   }else{
-    //     suma.push(contador)
-    //     contador = 1
-    //   }
-    //   // console.log(idArray[i+1])
-    //   j++
-    // }
-
-    // console.log(suma)
   }
 
   //clear HTML
@@ -191,63 +109,67 @@ async function mostrarClientes(){
     }
   }
 
-  //
-  function mostSelledProducts(products){
-    let newProducts
+  // CHART
+  function grafica(name, num){
 
-    products.length >= 4 ? (
-      products.reverse(),
-      products.sort((a,b) => a-b),
-      newProducts = products.slice(1,4),
-      console.log(newProducts)
-    ) : (
-      console.log(products)
-    )
-      
-  }
-
-  // chartts()
-
-  function grafica (){
-    const ctx = document.getElementById('myChart').getContext('2d');
-    if (myChart) {
-      myChart.destroy();
-  }
- myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-      }]
-  },
-  options: {
-      scales: {
-          y: {
-              beginAtZero: false
-          }
+    if(name !== null && num !== null){
+      const ctx = document.getElementById('myChart').getContext('2d');
+      if(myChart) {
+        myChart.destroy();
       }
+      
+      myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: name,
+            datasets: [{
+                label: 'Ventas por Producto',
+                data: num,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 206, 86, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 159, 64, 0.3)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+      });
+    }else{
+
+    }
   }
-});
-  }
+
+  // function mostSelledProducts(products){
+  //   let newProducts
+
+  //   products.length >= 4 ? (
+  //     products.reverse(),
+  //     products.sort((a,b) => a-b),
+  //     newProducts = products.slice(1,4),
+  //     console.log(newProducts)
+  //   ) : (
+  //     console.log(products)
+  //   )
+      
+  // }
 
 }
 

@@ -2,13 +2,53 @@
   "Platillos": [
     {
       "id": 1,
-      "nombre": "Huevos con jamón",
+      "nombre": "Huevos con Jamón",
       "precio": 70
     },
     {
       "id": 2,
-      "nombre": "Huevos con tocino",
+      "nombre": "Huevos con Tocino",
       "precio": 80
+    },
+    {
+      "id": 3,
+      "nombre": "Hot Cakes",
+      "precio": 90
+    },
+    {
+      "id": 4,
+      "nombre": "Club Sandwich",
+      "precio": 110
+    },
+    {
+      "id": 5,
+      "nombre": "Pay de Manzana",
+      "precio": 30
+    },
+    {
+      "id": 6,
+      "nombre": "Cheesecake",
+      "precio": 40
+    },
+    {
+      "id": 7,
+      "nombre": "Muffin",
+      "precio": 20
+    },
+    {
+      "id": 8,
+      "nombre": "Cappuchino",
+      "precio": 50
+    },
+    {
+      "id": 9,
+      "nombre": "Café Expreso",
+      "precio": 30
+    },
+    {
+      "id": 10,
+      "nombre": "Macchiato",
+      "precio": 60
     }
   ]
 }
